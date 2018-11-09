@@ -1,0 +1,17 @@
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\bin\Debug\KacperStudennyLab1.exe.config
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\bin\Debug\KacperStudennyLab1.exe
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\bin\Debug\KacperStudennyLab1.pdb
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.FormMain.resources
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.Properties.Resources.resources
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.csproj.GenerateResource.cache
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.csproj.CoreCompileInputs.cache
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.exe
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.pdb
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.csprojAssemblyReference.cache
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.FormBuilding.resources
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.FormEvent.resources
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\bin\Debug\Interop.WMPLib.dll
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\Interop.WMPLib.dll
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\studenny\Documents\KacperStudennyLab1\KacperStudennyLab1\obj\Debug\KacperStudennyLab1.csproj.ResolveComReference.cache

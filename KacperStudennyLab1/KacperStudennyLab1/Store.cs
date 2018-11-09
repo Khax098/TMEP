@@ -6,19 +6,28 @@ using System.Threading.Tasks;
 
 namespace KacperStudennyLab1
 {
-    class Store
+    public class Store
     {
         // Służy do procentowego zwiększania kosztu rozbudowania budynku względem poprzedniego poziomu budynku
-        readonly double increamentPercent = 1.4;
+        public readonly double increamentPercent = 1.4;
         // Początkowa wartość na starcie gry zasobów jakich potrzeba do rozbudowania budynku
-        readonly int startingResourcesNeededToBuild = 100;
+        public readonly int startingResourcesNeededToBuild = 100;
 
         // Zasoby osady
-        private Resources wood = new Resources();
-        private Resources people = new Resources();
-        private Resources food = new Resources();
-        private Resources soldiers = new Resources();
-        private Resources gold = new Resources();
+        public Resources wood { get; set; }
+        public People people { get; set; }
+        public Resources steel { get; set; }
+        public Resources soldiers { get; set; }
+        public Gold gold { get; set; }
+
+        public Store()
+        {
+            wood = new Resources();
+            people = new People();
+            steel = new Resources();
+            soldiers = new Resources();
+            gold = new Gold();
+        }
 
         /// <summary>
         /// Sprawdza czy jest odpowiednia ilość zasobów (drewno, ludzie, jedzenie) potrzebnych do rozbudowania budynku
@@ -28,71 +37,41 @@ namespace KacperStudennyLab1
         public Boolean IsEnoughResources(Resources resources)
         {
             // Oblicza ilość potrzebnych zasobów do rozbudowy budynku na następny poziom
-            UInt64 neededResourceAmount = Convert.ToUInt64( Math.Pow( increamentPercent, resources.GetBuildingLevel())*startingResourcesNeededToBuild);
+            UInt64 neededResourceAmount = NeddedResourceAmount(resources);
 
             // Sprawdza czy wszystkich potrzebnych zasobów jest odpowienia ilość 
-            if(wood.GetResourceAmount() >= neededResourceAmount &&
-                people.GetResourceAmount() >=neededResourceAmount &&
-                food.GetResourceAmount() >=neededResourceAmount)
+            if (wood.resourceAmount >= neededResourceAmount &&
+                gold.resourceAmount >= neededResourceAmount &&
+                steel.resourceAmount >= neededResourceAmount)
                 return true;
             else
                 return false;
         }
 
         /// <summary>
-        /// Produkuje jednocześnie wszystkie zasoby jakie wytwarzane są z czasem
+        /// Zwraca ilość materiałów potrzebnych do rozbudowy budynku na tym poziomie
         /// </summary>
+        /// <param name="resources"></param>
+        /// <returns></returns>
+        public UInt64 NeddedResourceAmount(Resources resources)
+        {
+            return Convert.ToUInt64(Math.Pow(increamentPercent, resources.buildingLevel) * startingResourcesNeededToBuild);
+        }
+
         public void ProduceResources()
         {
             wood.ProduceResources();
-            food.ProduceResources();
-            people.ProduceResources();
-            gold.ProduceResources();
+            steel.ProduceResources();
+            gold.ProduceResources(people);
         }
 
-        /// <summary>
-        /// Zwraca obiekt Resources przetrzymujący obiekt związany z zasobem drewna
-        /// </summary>
-        /// <returns></returns>
-        public Resources GetWood()
+        public void TakeUsedResources(Resources resources)
         {
-            return wood;
-        }
-
-        /// <summary>
-        /// Zwraca obiekt Resources przetrzymujący obiekt związany z zasobem ludzi
-        /// </summary>
-        /// <returns></returns>
-        public Resources GetPeople()
-        {
-            return people;
-        }
-
-        /// <summary>
-        /// Zwraca obiekt Resources przetrzymujący obiekt związany z zasobem jedzenia
-        /// </summary>
-        /// <returns></returns>
-        public Resources GetFood()
-        {
-            return food;
-        }
-
-        /// <summary>
-        /// Zwraca obiekt Resources przetrzymujący obiekt związany z zasobem żołnierzy
-        /// </summary>
-        /// <returns></returns>
-        public Resources GetSoldiers()
-        {
-            return soldiers;
-        }
-
-        /// <summary>
-        /// Zwraca obiekt Resources przetrzymujący obiekt związany z zasobem złota
-        /// </summary>
-        /// <returns></returns>
-        public Resources GetGold()
-        {
-            return gold;
+            wood.resourceAmount -= NeddedResourceAmount(resources);
+            steel.resourceAmount-= NeddedResourceAmount(resources);
+            gold.resourceAmount -= NeddedResourceAmount(resources);
         }
     }
 }
+
+

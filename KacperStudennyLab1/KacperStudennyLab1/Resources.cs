@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace KacperStudennyLab1
 {
-    class Resources
+    public class Resources
     {
-        // Obecny poziom budynku
-        private short buildingLevel = 1;
-        // Obecna ilość surowców
-        private UInt64 resourceAmount = 100;
-
-        /// <summary>
-        /// Geter dla zmiennej zasobów 
-        /// </summary>
-        /// <returns></returns>
-        public UInt64 GetResourceAmount()
+        public Resources()
         {
-            return resourceAmount;
+            buildingLevel = 1;
+            resourceAmount = 100;
         }
+        // Obecny poziom budynku
+        public UInt16 buildingLevel { get; set; }
+        // Obecna ilość surowców
+        public UInt64 resourceAmount { get; set; }
+
 
         /// <summary>
         /// Zwiększa przetrzymywany zasób o zadaną ilość 
@@ -31,28 +28,21 @@ namespace KacperStudennyLab1
             resourceAmount += addedResource;
         }
 
-        /// <summary>
-        /// Zwraca obecny poziom budynku
-        /// </summary>
-        /// <returns></returns>
-        public short GetBuildingLevel()
-        {
-            return buildingLevel;
-        }
 
         /// <summary>
         /// Zwiększa poziom budynku o jeden
         /// </summary>
         /// <returns></returns>
-        public void SetBuildingLevel()
+        public void AddBuildingLevel()
         {
             ++buildingLevel;
         }
 
+
         /// <summary>
         /// Dokłada ilość przetrzymywanych zasobów 
         /// </summary>
-        public void ProduceResources()
+        public virtual void ProduceResources()
         {
             // Ilość produkowanych zasobób na poziom budynku
             int producedResourcesPerLevel = 50;

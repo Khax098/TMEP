@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KacperStudennyLab1
 {
-    class Events
+    public class Events
     {
     }
 }

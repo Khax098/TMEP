@@ -13,27 +13,38 @@ namespace KacperStudennyLab1
 {
     public partial class FormMain : Form
     {
-
-        FormEvent formEvent;
-        FormBuilding formBuild;
         // Zasoby Osady
-        Store store = new Store();
+        public Store store { get; set; }
         // Licznik dni do przybycia wikingów
-        int daysCounter = 400;
+        public int daysCounter { get; set; }
         // Klasa umożliwiająca puszczenie muzyki
-        System.Media.SoundPlayer soundPlayer;
+        //System.Media.SoundPlayer soundPlayer;
 
 
         public FormMain()
         {
             InitializeComponent();
+            //PictureBoxWoodcutter.Parent = ImageBackground;
+            //PictureBoxWoodcutter.BackColor = Color.Transparent;
+            //PictureBoxWoodcutter.Location = (,);
             //soundPlayer = new System.Media.SoundPlayer(Path.Combine(Environment.CurrentDirectory, @"Music\", fileName
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            // Startuje timer
+            // Długość jednego dnia w grze
+            timerGame.Interval = 2000;
+            // Szybkość odświerzania obrazu
+            timerFPS.Interval = 200;
+            // Startuje timery
+            timerFPS.Start();
             timerGame.Start();
+
+            // Tworzę zawartość wszystkich surowców w magazynie
+            store = new Store();
+
+            // Dni do przybycia wikingów
+            daysCounter = 400;
             //soundPlayer.Play(); PlayLooping
         }
 
@@ -44,35 +55,43 @@ namespace KacperStudennyLab1
         /// <param name="e"></param>
         private void PictureBoxWoodcutter_Click(object sender, EventArgs e)
         {
-            
-            // Cała metoda jest do przebudowania: MA wyświetlać FORM z rozbudową placówki
-            // store.GetWood().SetBuildingLevel();
-            // labelTestWood.Text = Convert.ToString(store.GetWood().GetBuildingLevel());
-            FormBuilding formBuilding = new FormBuilding();
-            //formBuilding;
+            FormBuilding formBuilding = new FormBuilding(store, store.wood);
             formBuilding.ShowDialog();
-
         }
 
-        private void LabelTestWood_Click(object sender, EventArgs e)
+        private void UpdateResourceLabels()
         {
-
+            labelWood.Text = Convert.ToString(store.wood.resourceAmount);
+            labelSteel.Text = Convert.ToString(store.steel.resourceAmount);
+            labelPeople.Text = Convert.ToString(store.people.resourceAmount);
+            labelSoldiers.Text = Convert.ToString(store.soldiers.resourceAmount);
+            labelGold.Text = Convert.ToString(store.gold.resourceAmount);
         }
 
         private void TimerGame_Tick(object sender, EventArgs e)
         {
-            // Długość jednego dnia w grze
-            timerGame.Interval = 2000;
-            // Zwiększa licznik przeżytych dni w grze
-            ++daysCounter;
+            // Zmniejszanie licznik dni do przybycia wikingów
+            --daysCounter;
+
             // Produkowanie zasobów po upływie dnia
             store.ProduceResources();
-
             // Aktualizowanie tabel z danym o ilości surowców
-            // Dopisać dla reszty zasobów
-            labelWood.Text = Convert.ToString(store.GetWood().GetResourceAmount());
+        }
 
+        private void TimerFPS_Tick(object sender, EventArgs e)
+        {
+            UpdateResourceLabels();
+        }
 
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxCastle_Click(object sender, EventArgs e)
+        {
+            FormBuilding formBuilding = new FormBuilding(store, store.gold);
+            formBuilding.ShowDialog();
         }
     }
 }

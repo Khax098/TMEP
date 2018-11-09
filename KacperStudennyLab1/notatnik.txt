@@ -8,9 +8,19 @@
 1,4^lvlBudynku
 
 
-Przygotwania przed najazdem wikingów
-atak kogoœ innego jeszcze; event
-progress bar do najazdu +event naglego zwiekszenia
-
+>Przygotwania przed najazdem wikingów
+>atak kogoœ innego jeszcze; event
+>progress bar do najazdu +event naglego zwiekszenia
+>Event z budowaniem murów
 
 wszystkie okienka s¹ na starcie, ale schowane.
+
+
+Ludzie potrzebuj¹ swojej klasy dziedzicz¹cej po resources: wolni; pracuj¹cy; im wiêcej tym szybciej buduj¹
+
+Iloœæ pobieranych podatków wp³ywa na efektywnoœæ pracy robotników;
+
+dodaæ zegar do odœwie¿ania fps i do produkcji oddzielmny
+
+zmieniaæ obrazki przy odpowiednim poziomie budynków
+
